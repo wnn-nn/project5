@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop E-Commerce</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+    <!-- bootstrap icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .bg {
+            background-image: url(https://i.pinimg.com/474x/f4/b4/68/f4b468c720a97521602be6095de1abec.jpg);
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items:flex-start;
+            justify-content: flex-start;
+            text-align: center;
+        }
+
+        .center-container {
+            color: white;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-weight: 500;
+            font-size: 5em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .btn-custom, .btn-outline-custom{
+            background-color: #d19c56;
+        }
+
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        @media screen and (max-width:768px) {
+            
+            h1{
+                font-size: 4em;
+            }
+
+            .contact-info {
+                font-size: 1rem;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-bright bg-black" style=" background: linear-gradient(to right, #d19c56, #f8e0a1); z-index: 100;">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-cup-hot"></i></i>Mycoffee</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#Home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#OurProduct">Our Product</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#ContactUs">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- section 1 -->
+    <div class="container-fluid bg " id="Home">
+        <div class="container center-container">
+            <h1>Welcome to Mycoffee</h1>
+            <p>where every sip brings warmth and delight. Indulge in our carefully crafted coffees and delectable treats, perfect for making every moment feel special.</p>
+            <button class="btn btn-custom"><a href="#OurProduct" style="color: rgb(200, 199, 199);"></a>Order Now</button>
+        </div>
+    </div>
+
+    <!-- section 2 -->
+    <div class="container my-5" id="OurProduct" style="min-height: 500px; display: flex; flex-direction: column; justify-content: center;">
+        <h2 class="text-center mb-4"><b>Our Products</b></h2>
+        <!-- Filter Buttons -->
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-custom mx-2" onclick="filterProducts('all')">All</button>
+            <button class="btn btn-outline-warning mx-2" onclick="filterProducts('coffee')">Coffee</button>
+            <button class="btn btn-outline-warning mx-2" onclick="filterProducts('snack')">Snacks</button>
+        </div>
+
+        <!-- Product List -->
+        <div class="col-dm-4 row" id="product-list"></div>
+    </div>
+
+    <!-- section 3 -->
+    <div class="container-fluid align-items-center justify-content-center " id="ContactUs" style="color: white; margin-top: 40px;background: linear-gradient(to left, #2c2c2c, #2c3e50)">
+        <div class="container p-4 ">
+            <h2 class="mb-4" style="color: #d19c56;"><b>Contact Us</b></h2>
+            <div class="contact-info" style="font-size: 1rem">
+                <p><i class="bi bi-envelope"></i> <a href=" mailto:contact@mycoffee.com" class="text-white">contact@mycoffee.com</a></p>
+                <p><i class="bi bi-telephone"></i><a href=" tel:+62123456789" class="text-white">+62 123 456 789</a></p>
+                <p><i class="bi bi-geo-alt"></i> Jl. Coffee No. 123, Jakarta, Indonesia</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS dan dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Array produk
+        const products = [
+            {
+                name: "Espresso",
+                price: 35000,
+                description: "Rich and bold coffee made with a strong shot of espresso.",
+                image: "https://i.pinimg.com/474x/fe/fd/cd/fefdcd7198e8152cceae87c29a39bd77.jpg",
+                category: "coffee"
+            },
+            {
+                name: "Cappuccino",
+                price: 40000,
+                description: "A delicious blend of espresso, steamed milk, and a frothy top.",
+                image: "https://i.pinimg.com/474x/fd/a8/cc/fda8cc90b381836ffaed167a6b7e66e0.jpg",
+                category: "coffee"
+            },
+            {
+                name: "Chocolate Croissant",
+                price: 25000,
+                description: "Flaky croissant filled with rich chocolate.",
+                image: "https://i.pinimg.com/474x/cf/9b/af/cf9bafa8f904bb4c2aacf06cebf46331.jpg",
+                category: "snack"
+            },
+            {
+                name: "Banana Bread",
+                price: 22000,
+                description: "Soft and moist banana bread with a hint of cinnamon.",
+                image: "https://i.pinimg.com/474x/a0/7f/e0/a07fe0e2bc95c7ff80781acaa58a195f.jpg",
+                category: "snack"
+            }
+        ];
+
+        // Fungsi untuk menampilkan produk
+        function displayProducts(productsToDisplay) {
+            const productList = document.getElementById("product-list");
+            productList.innerHTML = ''; // Clear existing products
+
+            productsToDisplay.forEach(product => {
+                const productCard = `
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <p class="card-text"><strong>Rp ${product.price.toLocaleString()}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productList.innerHTML += productCard;
+            });
+        }
+
+        // Fungsi untuk filter produk berdasarkan kategori
+        function filterProducts(category) {
+            if (category === 'all') {
+                displayProducts(products); // Tampilkan semua produk
+            } else {
+                const filteredProducts = products.filter(product => product.category === category);
+                displayProducts(filteredProducts); // Tampilkan produk yang difilter
+            }
+        }
+
+        // Tampilkan semua produk saat pertama kali halaman dimuat
+        displayProducts(products);
+    </script>
+
+</body>
+</html>
