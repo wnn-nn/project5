@@ -13,109 +13,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        .bg {
-            background-image: url(https://i.pinimg.com/474x/f4/b4/68/f4b468c720a97521602be6095de1abec.jpg);
-            background-position: center;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            align-items:flex-start;
-            justify-content: flex-start;
-            text-align: center;
-        }
-
         .center-container {
             color: white;
             max-width: 600px;
-        }
-
-        h1 {
-            font-weight: 500;
-            font-size: 5em;
         }
 
         p {
             font-size: 1.2em;
         }
 
-        .btn-custom, .btn-outline-custom{
+        .btn-custom{
             background-color: #d19c56;
+        }
+
+        .btn-outline-custom{
+            background-color: none;
+            border:2px solid #d19c56;
+            color: #d19c56;
         }
 
         .product-card img {
             height: 200px;
             object-fit: cover;
         }
-
-        @media screen and (max-width:768px) {
-            
-            h1{
-                font-size: 4em;
-            }
-
-            .contact-info {
-                font-size: 1rem;
-
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-bright bg-black" style=" background: linear-gradient(to right, #d19c56, #f8e0a1); z-index: 100;">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="bi bi-cup-hot"></i></i>Mycoffee</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#Home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#OurProduct">Our Product</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#ContactUs">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- section 1 -->
-    <div class="container-fluid bg " id="Home">
-        <div class="container center-container">
-            <h1>Welcome to Mycoffee</h1>
-            <p>where every sip brings warmth and delight. Indulge in our carefully crafted coffees and delectable treats, perfect for making every moment feel special.</p>
-            <button class="btn btn-custom"><a href="#OurProduct" style="color: rgb(200, 199, 199);"></a>Order Now</button>
-        </div>
-    </div>
-
-    <!-- section 2 -->
-    <div class="container my-5" id="OurProduct" style="min-height: 500px; display: flex; flex-direction: column; justify-content: center;">
-        <h2 class="text-center mb-4"><b>Our Products</b></h2>
+    <div class="container my-5" style="min-height: 500px; display: flex; flex-direction: column; justify-content: center;">
+        <h2 class="text-center mb-4"><b>Mycoffee</b></h2>
         <!-- Filter Buttons -->
         <div class="d-flex justify-content-center mb-4">
             <button class="btn btn-custom mx-2" onclick="filterProducts('all')">All</button>
-            <button class="btn btn-outline-warning mx-2" onclick="filterProducts('coffee')">Coffee</button>
-            <button class="btn btn-outline-warning mx-2" onclick="filterProducts('snack')">Snacks</button>
+            <button class="btn btn-outline-custom mx-2" onclick="filterProducts('coffee')">Coffee</button>
+            <button class="btn btn-outline-custom mx-2" onclick="filterProducts('snack')">Snacks</button>
         </div>
 
         <!-- Product List -->
         <div class="col-dm-4 row" id="product-list"></div>
     </div>
-
-    <!-- section 3 -->
-    <div class="container-fluid align-items-center justify-content-center " id="ContactUs" style="color: white; margin-top: 40px;background: linear-gradient(to left, #2c2c2c, #2c3e50)">
-        <div class="container p-4 ">
-            <h2 class="mb-4" style="color: #d19c56;"><b>Contact Us</b></h2>
-            <div class="contact-info" style="font-size: 1rem">
-                <p><i class="bi bi-envelope"></i> <a href=" mailto:contact@mycoffee.com" class="text-white">contact@mycoffee.com</a></p>
-                <p><i class="bi bi-telephone"></i><a href=" tel:+62123456789" class="text-white">+62 123 456 789</a></p>
-                <p><i class="bi bi-geo-alt"></i> Jl. Coffee No. 123, Jakarta, Indonesia</p>
-            </div>
-
-        </div>
-    </div>
-
 
     <!-- Bootstrap JS dan dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
